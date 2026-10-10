@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f1eee7">
+  <title>Side A — Music Player</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="player.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="wordmark" href="#home" aria-label="Side A home"><span class="wordmark-icon">a</span>side<span class="wordmark-light">a</span></a>
+      <div class="topbar-center"><span class="live-dot"></span><span>YOUR LISTENING ROOM</span><span class="topbar-divider">/</span><span class="topbar-date">ALL TRACKS, NO SKIPS</span></div>
+      <button class="profile-button" type="button" aria-label="Your profile">JD</button>
+    </header>
+
+    <main class="layout" id="home">
+      <aside class="sidebar" aria-label="Library navigation">
+        <p class="eyebrow">YOUR SPACE</p>
+        <nav class="side-nav">
+          <a class="nav-item active" href="#now-playing"><span class="nav-symbol">◉</span>Now playing</a>
+          <a class="nav-item" href="#playlist"><span class="nav-symbol">▤</span>Your playlist<span class="nav-count" id="nav-count">03</span></a>
+        </nav>
+        <div class="sidebar-rule"></div>
+        <p class="eyebrow collection-label">IN THE ROTATION</p>
+        <div class="mini-album-list" id="mini-album-list"></div>
+        <div class="sidebar-note"><span class="note-mark">✳</span><span>Good sound.<br>Good company.</span></div>
+      </aside>
+
+      <section class="player-panel" id="now-playing" aria-label="Music player">
+        <div class="section-heading"><p class="eyebrow">NOW PLAYING</p><span class="track-index" id="track-index">01 / 03</span></div>
+        <div class="artwork-wrap">
+          <img class="album-art" id="album-art" src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1000&q=85" alt="Artist performing under warm stage lights">
+          <div class="artwork-stamp"><span>SIDE</span><strong>A</strong><span>SESSIONS</span></div>
+          <div class="artwork-caption"><span>INDEPENDENT FREQUENCIES</span><span>VOL. 001</span></div>
+        </div>
+        <div class="track-info">
+          <div class="track-copy"><h1 id="song-title">SoundHelix Song 1</h1><p id="song-artist">SoundHelix <span class="artist-separator">·</span> Open Sessions</p></div>
+          <button class="like-button" id="like-button" type="button" aria-label="Like this track" aria-pressed="false"><span aria-hidden="true">♡</span></button>
+        </div>
+        <div class="timeline">
+          <input id="progress" class="range progress-range" type="range" min="0" max="100" value="0" aria-label="Seek through track">
+          <div class="time-row"><span id="current-time">0:00</span><span id="duration">--:--</span></div>
+        </div>
+        <div class="controls">
+          <button class="icon-button shuffle-button" id="shuffle-button" type="button" aria-label="Shuffle playlist" aria-pressed="false" title="Shuffle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg></button>
+          <button class="icon-button transport-button" id="previous-button" type="button" aria-label="Previous track" title="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5v14M19 6 8 12l11 6z"/></svg></button>
+          <button class="play-button" id="play-button" type="button" aria-label="Play" title="Play"><svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg><svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h3v14H8zM15 5h3v14h-3z"/></svg></button>
+          <button class="icon-button transport-button" id="next-button" type="button" aria-label="Next track" title="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5v14M5 6l11 6-11 6z"/></svg></button>
+          <button class="icon-button autoplay-button" id="autoplay-button" type="button" aria-label="Autoplay off" aria-pressed="false" title="Autoplay off"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11a8 8 0 0 1 14-5l2 2M20 4v4h-4M20 13a8 8 0 0 1-14 5l-2-2M4 20v-4h4"/></svg><span class="autoplay-indicator"></span></button>
+        </div>
+        <div class="volume-row"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6l-5 4H4zM17 9a5 5 0 0 1 0 6M19 5a10 10 0 0 1 0 14"/></svg><input id="volume" class="range volume-range" type="range" min="0" max="1" step="0.01" value="0.72" aria-label="Volume"><span class="volume-value" id="volume-value">72%</span></div>
+      </section>
+
+      <aside class="queue-panel" id="playlist" aria-label="Playlist">
+        <div class="queue-heading"><div><p class="eyebrow">UP NEXT</p><h2>The warm-up</h2></div><button class="queue-menu" type="button" aria-label="Playlist details" title="Playlist details">···</button></div>
+        <div class="queue-meta"><span id="queue-track-count">3 TRACKS</span><span class="meta-dot"></span><span>OPEN SESSIONS</span></div>
+        <ol class="track-list" id="track-list"></ol>
+        <div class="queue-footer"><span class="queue-equalizer" aria-hidden="true"><i></i><i></i><i></i></span><span>CURATED FOR THE LONG WAY</span></div>
+        <div class="playlist-note"><span class="note-spark">✳</span><p>Take the scenic route.<br><strong>Let it play.</strong></p></div>
+      </aside>
+    </main>
+    <footer class="bottom-bar"><span>MADE FOR THE MOMENT</span><span class="footer-center">SIDE A <span>✳</span> OPEN SESSIONS</span><span id="playback-status">READY WHEN YOU ARE</span></footer>
+    <audio id="audio" preload="metadata"></audio>
+  </div>
+</body>
+</html>
